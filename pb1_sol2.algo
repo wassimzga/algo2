@@ -1,0 +1,53 @@
+ALGORITHM pb1_sol1
+VAR
+    ar1 : ARRAY_OF INTEGER[4];
+    ar2 : ARRAY_OF INTEGER[5];
+    i   : INTEGER;
+    j   : INTEGER := 0;
+    sum : INTEGER := 0;
+    count: INTEGER := 0;
+BEGIN
+    htab : HASH_TABLE<INTEGER,INTEGER>;
+
+    // get arrays values 
+    FOR i FROM 0 TO arr1.length-1 DO
+        Read(arr1[i]);
+    END_FOR
+    FOR i FROM 0 TO arr2.length-1 DO
+        Read(arr2[i]);
+    END_FOR
+    
+    // insert arrays values in hash table
+    FOR i FROM 0 TO arr1.length-1 DO
+        IF htab.lookup(arr1[i]); THEN
+            count := htab.get(arr1[i])+1;
+            htab.insert(arr1[i],count);
+        ElSE
+            htab.insert(arr1[i],1);
+        END_IF
+    END_FOR
+
+    FOR i FROM 0 TO arr2.length-1 DO
+        IF htab.lookup(arr2[i]); THEN
+            count := htab.get(arr1[i])+1;
+            htab.insert(arr2[i],count);
+        ElSE
+            htab.insert(arr2[i],1);
+        END_IF
+    END_FOR
+
+    // sum all the elements with count = 1
+    FOR i FROM 0 TO arr1.length-1 DO
+        IF htab.get(arr1[i])=1 THEN
+        sum := sum+1;
+        END_IF
+    END_FOR
+    
+    FOR i FROM 0 TO arr2.length-1 DO
+        IF htab.get(arr2[i])=1 THEN
+        sum := sum+1;
+        END_IF
+    END_FOR
+
+    Write("The sum of all distinct elements is : ",sum);
+END

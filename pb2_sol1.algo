@@ -1,0 +1,52 @@
+ALGORITHM sol1
+VAR
+
+Tab1 : ARRAY_Of INTEGER [4];
+Tab2 : ARRAY_OF INTEGER [5];
+i,j: INTEGER;
+sum: INTEGER;
+check : BOOLEAN;
+
+BEGIN
+    sum:=0;
+
+    FOR i FROM 0 TO Tab1.length-1  DO
+    read (Tab1[i]);
+    END_FOR
+    FOR i FROM 0 TO Tab2.length-1  DO
+        read(Tab2[i]);
+    END_FOR
+
+    FOR i FROM 0 TO Tab1.length-1 DO
+    
+    FOR j FROM 0 TO Tab2.length-1 DO
+        IF (tab1[i]==tab2[j]) THEN
+            check=true;
+            BREAK;
+        END_IF
+
+    END_FOR
+    IF (check=true) THEN
+        sum:=sum+Tab1[i];
+    END_IF
+        
+    END_FOR
+
+    FOR i FROM 0 TO tab2.length-1  DO
+        FOR j FROM 0 TO tab2.length DO
+        IF (tab1[i]==tab2[j]) THEN
+            check=true;
+            BREAK;
+        END_IF
+        IF (check=true) THEN
+            sum:=sum + tab2[i];
+        END_IF
+    
+
+        END_FOR
+    END_FOR
+    write("the sum is : ",sum) ;
+
+        
+    
+END
